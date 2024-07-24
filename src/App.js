@@ -1,11 +1,15 @@
-import "assets/scss/style.scss";
-import { Component } from "react";
-import Message from "./components/message";
+import React from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
 
-class App extends Component {
-  render() {
-    return <div className="App">tes</div>;
-  }
+export default function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route path="/" component={LandingPage} />
+        </Switch>
+      </Router>
+    </div>
+  );
 }
-
-export default App;
