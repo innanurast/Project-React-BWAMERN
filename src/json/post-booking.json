@@ -1,0 +1,13 @@
+{
+    "duration": "2",
+    "price": "240",
+    "bookingDateStart": "new Date()",
+    "bookingDateEnd": "new Date()",
+    "firstName": "Inna",
+    "lastName": "Amelia",
+    "emailAddress": "innanur16@gmail.com",
+    "phoneNumber": "081923012380",
+    "accountHolder": "Angga Risky",
+    "bankFrom": "BCA",
+    "proofPayment": "FileData()"
+  }
