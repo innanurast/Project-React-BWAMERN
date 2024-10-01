@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Used for route navigation within the application
+import { Link } from "react-router-dom";
 import propTypes from "prop-types";
 
 export default function Button(props) {
-  const className = ["btn"]; // Start with the 'btn' class for all buttons
-  if (props.className) className.push(props.className); // Include any additional classes passed via props
+  const className = [props.className];
   if (props.isPrimary) className.push("btn-primary");
+  if (props.isLight) className.push("btn-light");
   if (props.isLarge) className.push("btn-lg");
   if (props.isSmall) className.push("btn-sm");
   if (props.isBlock) className.push("btn-block");
@@ -31,7 +31,6 @@ export default function Button(props) {
     );
   }
 
-  // noopener noreferrer pada rel ini digunakan untuk SEO (Search Engine Optimization) untuk jaga-jaga ketika target menerima _blank karena ketika melakukan dev akan muncul warning di console
   if (props.type === "link") {
     if (props.isExternal) {
       return (
@@ -51,7 +50,7 @@ export default function Button(props) {
           to={props.href}
           className={className.join(" ")}
           style={props.style}
-          onClick={props.onClick}
+          onClick={onClick}
         >
           {props.children}
         </Link>
@@ -70,15 +69,15 @@ export default function Button(props) {
   );
 }
 
-// Set button prop types
 Button.propTypes = {
   type: propTypes.oneOf(["button", "link"]),
   onClick: propTypes.func,
-  target: propTypes.string,
   href: propTypes.string,
+  target: propTypes.string,
   className: propTypes.string,
-  isExternal: propTypes.bool,
   isPrimary: propTypes.bool,
+  isLight: propTypes.bool,
+  isExternal: propTypes.bool,
   isDisabled: propTypes.bool,
   isLoading: propTypes.bool,
   isSmall: propTypes.bool,
