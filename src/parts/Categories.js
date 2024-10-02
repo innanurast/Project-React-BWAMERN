@@ -1,11 +1,19 @@
 import Button from "components/Button";
 import React, { Component } from "react";
+import { motion } from "framer-motion";
 
 export default function Categories({ data }) {
   return data.map((category, index1) => {
     return (
       <section className="container" key={`categories-${index1}`}>
-        <h4 className="mb-3 font-weight-medium">{category.name}</h4>
+        <motion.h4
+          className="mb-3 font-weight-medium"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {category.name}
+        </motion.h4>
         <div className="container-grid">
           {category.items.length == 0 ? (
             <div className="row">
@@ -20,7 +28,12 @@ export default function Categories({ data }) {
                   key={`category-${index1}-item-${index2}`}
                   className="item column-3 row-1"
                 >
-                  <div className="card">
+                <motion.div
+                  className="card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 * index2 }}
+                >
                     {item.isPopular && (
                       <div className="tag">
                         Popular{" "}
@@ -38,7 +51,7 @@ export default function Categories({ data }) {
                             {item.city}, {item.country}
                         </span>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               );
             })

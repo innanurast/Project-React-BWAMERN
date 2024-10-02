@@ -6,6 +6,7 @@ import IconTraveler from "assets/images/icons/ic_traveler.svg";
 import IconTreasure from "assets/images/icons/ic_treasure.svg";
 import Button from "components/Button";
 import formatNumbers from "utils/formatNumbers";
+import { motion } from "framer-motion";
 
 export default function Hero(props) {
   function showMostPicked() {
@@ -17,7 +18,12 @@ export default function Hero(props) {
   }
 
   return (
-    <section className="container pt-4">
+    <motion.section
+      className="container pt-4"
+      initial={{ opacity: 0, y: 50 }}  // Mulai dari opacity 0 dan bergerak dari bawah
+      animate={{ opacity: 1, y: 0 }}  // Animasi ke opacity 1 dan posisi normal
+      transition={{ duration: 0.8 }}  // Durasi animasi
+    >
       <div className="row align-items-center">
         <div className="col-auto pr-5" style={{ width: 530 }}>
           <h1 className="font-weight-bold line-height-1 mb-3">
@@ -101,6 +107,6 @@ export default function Hero(props) {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
